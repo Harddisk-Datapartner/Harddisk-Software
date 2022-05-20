@@ -8,8 +8,8 @@ customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "gre
 
 class App(customtkinter.CTk):
 
-    WIDTH = 780
-    HEIGHT = 520
+    WIDTH = 900
+    HEIGHT = 900
 
     def __init__(self):
         super().__init__()
@@ -26,9 +26,7 @@ class App(customtkinter.CTk):
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        self.frame_left = customtkinter.CTkFrame(master=self,
-                                                 width=180,
-                                                 corner_radius=0)
+        self.frame_left = customtkinter.CTkFrame(master=self, width=180, corner_radius=0)
         self.frame_left.grid(row=0, column=0, sticky="nswe")
 
         self.frame_right = customtkinter.CTkFrame(master=self)
@@ -73,6 +71,13 @@ class App(customtkinter.CTk):
                                                 command=self.change_mode)
         self.switch_2.grid(row=10, column=0, pady=10, padx=20, sticky="w")
 
+        
+        
+        
+        
+        
+        
+        
         # ============ frame_right ============
 
         # configure grid layout (3x7)
