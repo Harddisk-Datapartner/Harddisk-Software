@@ -6,7 +6,7 @@ import subprocess
 window = Tk()
 window.geometry("1000x500")
 window.title("Harddisk Datapartner")
-window.iconbitmap(default='HDDLOGO.ico')
+"""window.iconbitmap(default='HDDLOGO.ico')"""
 window.configure(background="Black")
 Label (window, text="Velg programvare", bg="Black", fg="white", font="Helvetica 20").grid(row=0, column=0)
 

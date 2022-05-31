@@ -34,7 +34,10 @@ def checksize():
     print(app_height)
     print(app_width)
 
-button1 = customtkinter.CTkButton(left_frame, command=checksize, text="1", width=70, height=70).place(relx=0.05, rely=0.03)
+
+
+vlc_image = PhotoImage(file="Logos\\128x128\\VLC 128x128.png")
+button1 = customtkinter.CTkButton(left_frame, command=checksize, image=vlc_image, text="1", width=70, height=70).place(relx=0.05, rely=0.03)
 button2 = customtkinter.CTkButton(left_frame, command=checksize, text="2", width=70, height=70).place(relx=0.05, rely=0.2)
 button3 = customtkinter.CTkButton(left_frame, command=checksize, text="3", width=70, height=70).place(relx=0.05, rely=0.37)
 button4 = customtkinter.CTkButton(left_frame, command=checksize, text="4", width=70, height=70).place(relx=0.05, rely=0.54)
