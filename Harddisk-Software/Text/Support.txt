@@ -6,6 +6,9 @@ Sartor:      934 54 150
 Lagunen:     902 17 530
 
 Fjernstyring:
-For hjelp via fjernstyring ber vi deg åpne Teamviewer og ha Din ID klar før du ringer. Ikonet ligger på skrivebordet. Klikk på dette ikonet [IKON] (dersom det åpnes en nettside samtidig kan denne lukkes). Her finner du Din ID og passord. For at vi skal få tilgang til maskinen din må du lese opp begge til tekniker. Passordet endrer seg for hver gang man stenger programmet, du kan derfor være trygg på at ingen får tilgang til maskinen din uten at du vet om det.
+For hjelp via fjernstyring ber vi deg åpne Teamviewer og ha Din ID klar før du ringer. 
+Ikonet ligger på skrivebordet. Klikk på dette ikonet [IKON] (dersom det åpnes en nettside samtidig kan denne lukkes). 
+Her finner du Din ID og passord. For at vi skal få tilgang til maskinen din må du lese opp begge til tekniker. 
+Passordet endrer seg for hver gang man stenger programmet, du kan derfor være trygg på at ingen får tilgang til maskinen din uten at du vet om det.
 Dersom du ikke finner ikonet på Skrivebordet kan du finne programmet ved å trykke Start [IKON] og skrive Teamviewer.
 
