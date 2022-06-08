@@ -1,75 +1,86 @@
-import tkinter as tk
-from tkinter import ttk
-import sv_ttk
+from tkinter import *
+import customtkinter
 
-root = tk.Tk()
-"""style= ttk.Style(root)
-root.tk.call("source", "sun-valley.tcl")"""
+root = customtkinter.CTk()
+root_width = 1440
+root_height = 810
+
+root_frame = customtkinter.CTkFrame(master=root, fg_color="cyan")
+root_frame.pack(fill="both", expand=True)
 
 
 
-sv_ttk.set_theme("dark")  # Set dark theme
-sv_ttk.use_dark_theme()  # Set dark theme
+class Category1Frame:
+    def __init__(self, master):
+        categoryframe = customtkinter.CTkFrame(master, fg_color="red")
+        categorylabel = customtkinter.CTkLabel(master, fg_color="blue")
 
-install_notebook = ttk.Notebook(root)
-install_notebook.pack()
-frame1 = ttk.Notebook(install_notebook)
-frame1.pack()
-frame2 = ttk.Notebook(install_notebook)
-frame2.pack()
-frame3 = ttk.Notebook(install_notebook)
-frame3.pack()
+def showframe(args, Category1Frame):
+    if args == 1:
+        categoryframe.pack()
+        categorylabel.pack()
 
-install_notebook.add(frame1, text="Nettleser")
-install_notebook.add(frame2, text="Media")
-install_notebook.add(frame3, text="Fjernstyring")
+
+
+button1 = customtkinter.CTkButton(master=root, text="show1", command=lambda:showframe(1))
+
 
 root.mainloop()
 
 
 
 
+"""        categoryframe.pack(fill="both", expand=True)
+
+        self.classbutton = customtkinter.CTkButton(categoryframe, text="framebutton")
+        self.classbutton.pack()
+
+class Category2Frame:
+    def __init__(self, master):
+        categoryframe = customtkinter.CTkFrame(master, fg_color="blue")
+        categoryframe.pack(fill="both", expand=True)
+
+        self.classbutton = customtkinter.CTkButton(categoryframe, text="framebutton")
+        self.classbutton.pack()
+
+def showframe(args):
+    if args == 1:
+        e = Category1Frame(root)
+    else:
+        Category1Frame.packforget()
 
 
-
-
-
-
-
-"""from tkinter import *
-import tkinter
-import sv_ttk
-
-root = tkinter.Tk()
-root.tk.call("source", "sun-valley.tcl")
-
-sv_ttk.set_theme("dark")  # Set dark theme
-sv_ttk.use_dark_theme()  # Set dark theme
-
-sv_ttk.toggle_theme()  # Toggle between dark and light theme
-
-print(sv_ttk.get_theme())  # Get what theme the app uses (either 'light' or 'dark')
-
-root.mainloop()
+button1 = customtkinter.CTkButton(master=root, text="show1", command=lambda:showframe(1))
+button2 = customtkinter.CTkButton(master=root, text="show2", command=lambda:showframe(2))
+button1.pack()
+button2.pack()
 
 """
 
 
-"""vlc_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\VLC 128x128.png").resize((200, 200)))
+
+"""class MyButton(Button):
+
+    def __init__(self, text, *args, **kwargs):
+        self.text = text
 
 
 
-check1 = sv_ttk.Checkbutton(root, width=20, image=vlc_image)
-check1.pack()
-"""
+btn1 = MyButton(root, "heisann")
+btn1.pack()
 
+btn = tkinter.Button(master=root, text="Hallo")
+btn.pack()
 
-
-
-"""class SoftwareButton:
-    def __init__(self, name, image, execute):
-        self.name = name
+class Softwarebutton(customtkinter.CTkButton):
+    def __init__(self, master, text, fg_color, image):
+        super().__init__()
+        self.master = master
+        self.text = text
+        self.fg_color = fg_color
         self.image = image
-        self.execute = execute"""
 
-        
+
+
+vlc_check = Softwarebutton(standardpakke_frame, "VLC", "red", vlc_image)
+vlc_check.pack()"""

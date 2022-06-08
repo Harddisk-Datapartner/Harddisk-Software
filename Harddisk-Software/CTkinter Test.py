@@ -1,7 +1,6 @@
 from tkinter import Frame, Tk, ttk 
 import tkinter
 from tkinter import font
-from turtle import home
 import customtkinter
 from PIL import Image, ImageTk
 
@@ -36,78 +35,12 @@ support_image = ImageTk.PhotoImage(Image.open("Logos\Menu icons\Support.png").re
 
 # ==========Software Images==========
 
-# Browsers/Nettlesere
 firefox_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\Firefox 128x128.png").resize((image_size, image_size)))
 vlc_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\VLC 128x128.png").resize((image_size, image_size)))
 spotify_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\Spotify 128x128.png").resize((image_size, image_size)))
-"""chrome_image =
-Brave_image =
-vivaldi_image =
-duckduckgo_image =
-
-# Email Clients/Epost klienter
-emclient_image =
-thunderbird_image =
-
-# Document management/Dokumentbehandling
-adobe_reader_image = 
-libreoffice_image =
-openoffice_image = 
-evernote_image = 
-onenote_image = 
-
-# Media
-spotify
-vlc
-itunes_image = 
-tidal_image = 
-k_lite_codec = 
-
-#Photo editing/Bilderedigering
-gimp_image = 
-irfanview_image = 
-greenshot_image = 
-
-#Games/Spill
 steam_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\Steam 128x128.png").resize((image_size, image_size)))
-epic_games_image = 
-gog_image =
-origin_image= 
-blizz_image = 
-ubisoft_image = 
+teamviewer_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\Teamviewer 128x128.png").resize((image_size, image_size)))
 
-# Compression/Komprimering
-peazip_image =
-sevenzip_image = 
-
-# RGB
-openrgb_image = 
-icue_image = 
-nzxt_image = 
-msi_image = 
-gigabyte_rgb_image = 
-lianli_image = 
-# asus armory crate
-
-#Communtication/Kommunikasjon
-discord_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\Discord 128x128.png").resize((image_size, image_size)))
-teamwiever_image = ImageTk.PhotoImage(Image.open("Logos\\128x128\\Teamviewer 128x128.png").resize((image_size, image_size)))
-skype_image = 
-zoom_image = 
-
-# Streaming
-obs_image = 
-shadowplay_image = 
-elgato_image = 
-
-# Drivers
-intel_ds_image = 
-amd_image = 
-nv_ci_image = 
-nvidia_ge_image = 
-asus_ac_image = 
-gigabyte_app_image = 
-lenovo_su_image = """
 
 # ==========Hover tooltip==========
 class ToolTip(object):
@@ -139,61 +72,108 @@ class ToolTip(object):
 software_list = "cmd /k "
 
 # ==========Functions executed from buttons.==========
-def toggle_vlc():
+cmd_vlc = "winget install VideoLAN.VLC -e && "
+cmd_firefox = "winget install Mozilla.Firefox -e && "
+cmd_spotify = "winget install Spotify.Spotify -e && "
+cmd_discord = "winget install Discord.Discord -e && "
+cmd_steam = "winget install Valve.Steam -e && "
+cmd_teamwiever = "winget install Teamviewer.Teamviewer -e && "
+cmd_spotify = "winget install Spotify.Spotify -e && "
+cmd_firefox = "winget install Mozilla.Firefox -e && "
+
+
+
+def toggle_software(args):
+    global software_list
+    if args == 1:
+        if "VideoLAN.VLC" in software_list:
+            software_list = software_list.replace(cmd_vlc, "")
+            vlc_check.fg_color="#0B57C2"
+            chosen_vlc_label.pack_forget()
+        else:
+            software_list += cmd_vlc
+            chosen_vlc_label.pack(side="left")
+            vlc_check.fg_color="#F5681C"
+    if args == 2:
+        if "Mozilla.Firefox" in software_list:
+            software_list = software_list.replace(cmd_firefox, "")
+            chosen_firefox_label.pack_forget()
+        else:
+            software_list += cmd_firefox
+            chosen_firefox_label.pack(side="left")
+    if args == 3:
+        if "Spotify.Spotify" in software_list:
+            software_list = software_list.replace(cmd_spotify, "")
+            chosen_spotify_label.pack_forget()
+        else:
+            software_list += cmd_spotify
+            chosen_spotify_label.pack(side="left")
+    if args == 4:
+        if "Teamviewer.Teamviewer" in software_list:
+            software_list = software_list.replace(cmd_teamwiever, "")
+            chosen_teamviewer_label.pack_forget()
+        else:
+            software_list += cmd_teamwiever
+            chosen_teamviewer_label.pack(side="left")
+    if args == 5:
+            if "Valve.Steam" in software_list:
+                software_list = software_list.replace(cmd_steam, "")
+                chosen_steam_label.pack_forget()
+            else:
+                software_list += cmd_steam
+                chosen_steam_label.pack(side="left")
+    print(software_list)
+
+
+
+def toggle_category_frame(args):
+    if args == 1:
+        standardpakke_frame.pack_forget()
+        category2_frame.pack_forget()
+        category3_frame.pack_forget()
+        category4_frame.pack_forget()
+        category1_frame.pack(pady=5, padx=5, fill="both", expand=True)
+
+    if args == 2:
+        standardpakke_frame.pack_forget()
+        category1_frame.pack_forget()
+        category3_frame.pack_forget()
+        category4_frame.pack_forget()
+        category2_frame.pack(pady=5, padx=5, fill="both", expand=True)
+
+    if args == 3:
+        standardpakke_frame.pack_forget()
+        category1_frame.pack_forget()
+        category2_frame.pack_forget()
+        category4_frame.pack_forget()
+        category3_frame.pack(pady=5, padx=5, fill="both", expand=True)
+
+    if args == 4:
+        standardpakke_frame.pack_forget()
+        category1_frame.pack_forget()
+        category2_frame.pack_forget()
+        category3_frame.pack_forget()
+        category4_frame.pack(pady=5, padx=5, fill="both", expand=True)
+    
+
+
+
+
+"""def toggle_vlc():
     global software_list
     cmd_vlc = "winget install VideoLAN.VLC -e && "
     if "VideoLAN.VLC" in software_list:
-        software_list.replace(cmd_vlc, "bæsj")
+        software_list = software_list.replace(cmd_vlc, "")
         chosen_vlc_label.pack_forget()
-        print("false")
     else:
         software_list += cmd_vlc
-        chosen_vlc_label.pack(side="left")
-        print("True")
-
-        
-    print(software_list)
+        chosen_vlc_label.pack(side="left")"""
 
 
-"""    cmd_vlc = "winget install VideoLAN.VLC -e && "
-    
-    if cmd_vlc in software_list:
-        software_list.replace(cmd_vlc, "")
-    else:
-        software_list += cmd_vlc 
-    print(software_list)"""
 
-def toggle_firefox():
-    global software_list
-    cmd_firefox = "winget install Mozilla.Firefox -e && "
-    if "VideoLAN.VLC" in software_list:
-        software_list.replace(cmd_firefox, "")
-        chosen_firefox_label.pack_forget()
-    else:
-        software_list += cmd_firefox
-        chosen_firefox_label.pack(side="left")
-    print(software_list)
 
-def toggle_spotify():
-    global software_list
-    chosen_spotify_label.pack(side="left")
-    software_list += "winget install Spotify.Spotify -e && "
-    print(software_list)
 
-def toggle_teamviewer():
-    global software_list
-    software_list += "winget install Teamviewer.Teamviewer -e && "
-    print(software_list)
 
-def toggle_steam():
-    global software_list
-    software_list += "winget install Valve.Steam -e && "
-    print(software_list)
-
-def toggle_discord():
-    global software_list
-    software_list += "winget install Discord.Discord -e && "
-    print(software_list)
 
 
         
@@ -344,9 +324,11 @@ chosen_software_frame4 = customtkinter.CTkFrame(master=chosen_software_main_fram
 
 
 
-chosen_vlc_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=vlc_image, height=145)
-chosen_firefox_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=firefox_image, height=145)
-chosen_spotify_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=spotify_image, height=145)
+chosen_vlc_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=vlc_image, corner_radius=15, height=145)
+chosen_firefox_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=firefox_image, corner_radius=15, height=145)
+chosen_spotify_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=spotify_image, corner_radius=15, height=145)
+chosen_teamviewer_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=teamviewer_image, corner_radius=15, height=145)
+chosen_steam_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=steam_image, corner_radius=15, height=145)
 
 # ==========Support screen (No packing)==========
 support_frame = customtkinter.CTkFrame(master=root, 
@@ -378,7 +360,8 @@ category1_button = customtkinter.CTkButton(master=software_tabs_frame,
                                                                 text="1", 
                                                                 text_font=("Roboto Medium", 20),
                                                                 width=85, 
-                                                                corner_radius=15)
+                                                                corner_radius=15, 
+                                                                command=lambda:toggle_category_frame(1))
 
 category2_button = customtkinter.CTkButton(master=software_tabs_frame, 
                                                                 fg_color="#0b57c2", 
@@ -386,7 +369,8 @@ category2_button = customtkinter.CTkButton(master=software_tabs_frame,
                                                                 text="2", 
                                                                 text_font=("Roboto Medium", 20), 
                                                                 width=85, 
-                                                                corner_radius=15)
+                                                                corner_radius=15, 
+                                                                command=lambda:toggle_category_frame(2))
 
 category3_button = customtkinter.CTkButton(master=software_tabs_frame, 
                                                                 fg_color="#0b57c2", 
@@ -394,7 +378,8 @@ category3_button = customtkinter.CTkButton(master=software_tabs_frame,
                                                                 text="3", 
                                                                 text_font=("Roboto Medium", 20), 
                                                                 width=85, 
-                                                                corner_radius=15)
+                                                                corner_radius=15, 
+                                                                command=lambda:toggle_category_frame(3))
 
 category4_button = customtkinter.CTkButton(master=software_tabs_frame, 
                                                                 fg_color="#0b57c2", 
@@ -402,7 +387,8 @@ category4_button = customtkinter.CTkButton(master=software_tabs_frame,
                                                                 text="4", 
                                                                 text_font=("Roboto Medium", 20), 
                                                                 width=85, 
-                                                                corner_radius=15)
+                                                                corner_radius=15, 
+                                                                command=lambda:toggle_category_frame(4))
 
 
 category5_button = customtkinter.CTkButton(master=software_tabs_frame, 
@@ -480,20 +466,32 @@ category13_button = customtkinter.CTkButton(master=software_tabs_frame,
 
 # ==========Sofware Buttons==========
 
-vlc_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="VLC", text_font=("Roboto Medium", 20), image=vlc_image, command=toggle_vlc)
+vlc_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="VLC", text_font=("Roboto Medium", 20), image=vlc_image, command=lambda:toggle_software(1))
 
-firefox_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Firefox", text_font=("Roboto Medium", 20), image=firefox_image, command=toggle_firefox)
+firefox_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Firefox", text_font=("Roboto Medium", 20), image=firefox_image, command=lambda:toggle_software(2))
 
-spotify_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Spotify", text_font=("Roboto Medium", 20), image=spotify_image, command=toggle_spotify)
+spotify_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Spotify", text_font=("Roboto Medium", 20), image=spotify_image, command=lambda:toggle_software(3))
 
-"""teamviewer_check = customtkinter.CTkButton(software1_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Teamwiever", text_font=("Roboto Medium", 20), image=teamwiever_image, command=toggle_teamviewer)
-ToolTip(widget = teamviewer_check, text = "Beskrivelse av Teamviewer")
+teamviewer_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Teamwiever", text_font=("Roboto Medium", 20), image=teamviewer_image, command=lambda:toggle_software(4))
 
-steam_check = customtkinter.CTkButton(software1_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Steam", text_font=("Roboto Medium", 20), image=steam_image, command=toggle_steam)
-ToolTip(widget = steam_check, text = "Beskrivelse av Steam")
+steam_check = customtkinter.CTkButton(standardpakke_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Steam", text_font=("Roboto Medium", 20), image=steam_image, command=lambda:toggle_software(5))
 
-discord_check = customtkinter.CTkButton(software1_frame, fg_color="#0b57c2", hover_color="#F5681C", text ="Discord", text_font=("Roboto Medium", 20), image=discord_image, command=toggle_discord)
-ToolTip(widget = discord_check, text = "Beskrivelse av Discord")"""
+
+category1_frame = customtkinter.CTkFrame(master=install_frame, 
+                                            fg_color=("#c4c3c2", "red"), 
+                                            corner_radius=15)
+
+category2_frame = customtkinter.CTkFrame(master=install_frame, 
+                                            fg_color=("#c4c3c2", "blue"), 
+                                            corner_radius=15)
+
+category3_frame = customtkinter.CTkFrame(master=install_frame, 
+                                            fg_color=("#c4c3c2", "green"), 
+                                            corner_radius=15)
+
+category4_frame = customtkinter.CTkFrame(master=install_frame, 
+                                            fg_color=("#c4c3c2", "yellow"), 
+                                            corner_radius=15)
 
 
 # ==========Left frame buttons. Packing and unpacking widgets==========
@@ -529,6 +527,8 @@ def clicked_install_software():
     firefox_check.pack()
     spotify_check.pack()
     vlc_check.pack()
+    teamviewer_check.pack()
+    steam_check.pack()
 
 
     category1_button.pack(pady=5, padx=5, side="left")

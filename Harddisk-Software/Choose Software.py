@@ -72,3 +72,14 @@ os.system('cmd /k'), testprog"""
     software_list = software_list[:-7]
     os.system('cmd /k') + software_list
     # print(software_list)"""
+
+
+    
+software_list = "cmd /k "
+def toggle_vlc():
+    global software_list
+    cmd_vlc = "winget install VideoLAN.VLC -e && "
+    if "VideoLAN.VLC" in software_list:
+        software_list.replace(cmd_vlc, "")
+    else:
+        software_list += cmd_vlc
