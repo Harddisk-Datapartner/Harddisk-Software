@@ -1,4 +1,3 @@
-from tkinter import Frame, Tk, ttk 
 import tkinter
 from tkinter import font
 import customtkinter
@@ -88,12 +87,10 @@ def toggle_software(args):
     if args == 1:
         if "VideoLAN.VLC" in software_list:
             software_list = software_list.replace(cmd_vlc, "")
-            vlc_check.fg_color="#0B57C2"
             chosen_vlc_label.pack_forget()
         else:
             software_list += cmd_vlc
             chosen_vlc_label.pack(side="left")
-            vlc_check.fg_color="#F5681C"
     if args == 2:
         if "Mozilla.Firefox" in software_list:
             software_list = software_list.replace(cmd_firefox, "")
@@ -127,32 +124,17 @@ def toggle_software(args):
 
 
 def toggle_category_frame(args):
+    # Every time the function is called it hides previously created frames.
+    for frame in (category1_frame, category2_frame, category3_frame, category4_frame):
+        frame.pack_forget()
+    standardpakke_frame.pack_forget()
     if args == 1:
-        standardpakke_frame.pack_forget()
-        category2_frame.pack_forget()
-        category3_frame.pack_forget()
-        category4_frame.pack_forget()
         category1_frame.pack(pady=5, padx=5, fill="both", expand=True)
-
     if args == 2:
-        standardpakke_frame.pack_forget()
-        category1_frame.pack_forget()
-        category3_frame.pack_forget()
-        category4_frame.pack_forget()
         category2_frame.pack(pady=5, padx=5, fill="both", expand=True)
-
     if args == 3:
-        standardpakke_frame.pack_forget()
-        category1_frame.pack_forget()
-        category2_frame.pack_forget()
-        category4_frame.pack_forget()
         category3_frame.pack(pady=5, padx=5, fill="both", expand=True)
-
     if args == 4:
-        standardpakke_frame.pack_forget()
-        category1_frame.pack_forget()
-        category2_frame.pack_forget()
-        category3_frame.pack_forget()
         category4_frame.pack(pady=5, padx=5, fill="both", expand=True)
     
 
@@ -324,11 +306,11 @@ chosen_software_frame4 = customtkinter.CTkFrame(master=chosen_software_main_fram
 
 
 
-chosen_vlc_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=vlc_image, corner_radius=15, height=145)
-chosen_firefox_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=firefox_image, corner_radius=15, height=145)
-chosen_spotify_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=spotify_image, corner_radius=15, height=145)
-chosen_teamviewer_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=teamviewer_image, corner_radius=15, height=145)
-chosen_steam_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=steam_image, corner_radius=15, height=145)
+chosen_vlc_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=vlc_image, width=20, corner_radius=15, height=145)
+chosen_firefox_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=firefox_image, width=20,  corner_radius=15, height=145)
+chosen_spotify_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=spotify_image, width=20, corner_radius=15, height=145)
+chosen_teamviewer_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=teamviewer_image, width=20, corner_radius=15, height=145)
+chosen_steam_label = customtkinter.CTkLabel(master = chosen_software_main_frame, image=steam_image, width=20, corner_radius=15, height=145)
 
 # ==========Support screen (No packing)==========
 support_frame = customtkinter.CTkFrame(master=root, 
@@ -498,10 +480,9 @@ category4_frame = customtkinter.CTkFrame(master=install_frame,
 # ==========PACK/TOGGLE HOME PAGE==========
 def clicked_home():
     print("Clicked home")
-    install_frame.pack_forget()
-    support_frame.pack_forget()
-    install_bottom_frame.pack_forget()
-    chosen_software_main_frame.pack_forget()
+    for frame in (install_frame, support_frame, install_bottom_frame, chosen_software_main_frame):
+        frame.pack_forget()
+
 
     home_frame.pack(pady=5, padx=5, fill="both", expand=True)
     home_headline_frame.pack(pady=10, padx=10, fill="x")
@@ -509,8 +490,8 @@ def clicked_home():
 # ==========PACK/TOGGLE INSTALL PAGE==========
 def clicked_install_software():
     print("Clicked install software")
-    home_frame.pack_forget()
-    support_frame.pack_forget()
+    for frame in (category1_frame, category2_frame, category3_frame, category4_frame, home_frame, support_frame):
+        frame.pack_forget()
 
     install_frame.pack(padx=5, fill="both", expand=True)
     install_headline_frame.pack(pady=5, padx=5, fill="x")
@@ -530,20 +511,9 @@ def clicked_install_software():
     teamviewer_check.pack()
     steam_check.pack()
 
-
-    category1_button.pack(pady=5, padx=5, side="left")
-    category2_button.pack(pady=5, padx=5, side="left")
-    category3_button.pack(pady=5, padx=5, side="left")
-    category4_button.pack(pady=5, padx=5, side="left")
-    category5_button.pack(pady=5, padx=5, side="left")
-    category6_button.pack(pady=5, padx=5, side="left")
-    category7_button.pack(pady=5, padx=5, side="left")
-    category8_button.pack(pady=5, padx=5, side="left")
-    category9_button.pack(pady=5, padx=5, side="left")
-    category10_button.pack(pady=5, padx=5, side="left")
-    category11_button.pack(pady=5, padx=5, side="left")
-    category12_button.pack(pady=5, padx=5, side="left")
-    category13_button.pack(pady=5, padx=5, side="left")
+    for button in (category1_button, category2_button, category3_button, category4_button, category5_button, category6_button, 
+    category7_button, category8_button, category9_button, category10_button, category11_button, category12_button, category13_button):
+        button.pack(pady=5, padx=5, side="left")
 
 
     # ==========Packs the bottom frame with install, update and uninstall buttons==========
@@ -564,11 +534,8 @@ def clicked_install_software():
 # ==========PACK/TOGGLE SUPPORT PAGE==========
 def clicked_support():
     print("Clicked support")
-    home_frame.pack_forget()
-    install_frame.pack_forget()
-    install_bottom_frame.pack_forget()
-    chosen_software_main_frame.pack_forget()
-
+    for frame in (home_frame, install_frame, install_bottom_frame, chosen_software_main_frame):
+        frame.pack_forget()
 
     support_frame.pack(pady=5, padx=5, fill="both", expand=True)
     support_main_label.pack(pady=5, padx=20, expand=True, side="bottom")

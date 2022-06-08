@@ -1,4 +1,6 @@
+from pydoc import text
 from tkinter import *
+from unicodedata import category
 import customtkinter
 
 root = customtkinter.CTk()
@@ -10,19 +12,61 @@ root_frame.pack(fill="both", expand=True)
 
 
 
-class Category1Frame:
+
+
+
+class CategoryWindow:
+    def __init__(self, root, text=text):
+        self.root = root_frame
+        self.frame = customtkinter.CTkFrame(root_frame, fg_color="red", text=self.text)
+        self.frame.pack()
+        self.label = customtkinter.CTkLabel(self.frame, fg_color="gray", text=self.text)
+        self.label.pack()
+        self.button = customtkinter.CTkButton(self.frame, fg_color="green", text="buttontest")
+        self.button.pack()
+
+
+
+def CreateCategory1():
+    category1 = CategoryWindow(root_frame, self.text="halllllo")
+def CreateCategory2():
+    category1 = CategoryWindow(root_frame, "bæsj")
+
+
+
+
+
+
+createcat1_btn = customtkinter.CTkButton(root_frame, text="Create category 1", command=CreateCategory1)
+createcat2_btn = customtkinter.CTkButton(root_frame, text="Create category 2", command=CreateCategory2)
+createcat1_btn.pack()
+createcat2_btn.pack()
+
+
+"""class Category1Frame:
     def __init__(self, master):
         categoryframe = customtkinter.CTkFrame(master, fg_color="red")
-        categorylabel = customtkinter.CTkLabel(master, fg_color="blue")
-
-def showframe(args, Category1Frame):
-    if args == 1:
         categoryframe.pack()
+        categorylabel = customtkinter.CTkLabel(categoryframe, fg_color="blue", text="Frame 1")
+        categorylabel.pack()
+
+class Category2Frame:
+    def __init__(self, master):
+        categoryframe = customtkinter.CTkFrame(master, fg_color="yellow")
+        categoryframe.pack()
+        categorylabel = customtkinter.CTkLabel(categoryframe, fg_color="green", text="Frame 2")
         categorylabel.pack()
 
 
 
-button1 = customtkinter.CTkButton(master=root, text="show1", command=lambda:showframe(1))
+def create_frame_1():
+    e =Category1Frame(root_frame)
+"""
+
+
+"""button1 = customtkinter.CTkButton(master=root_frame, text="show1", command=create_frame_1)
+button1.pack()
+"""
 
 
 root.mainloop()

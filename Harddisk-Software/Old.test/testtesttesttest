@@ -1,0 +1,149 @@
+from tkinter import *
+from tkinter.font import BOLD
+import customtkinter
+from PIL import Image, ImageTk
+
+customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
+customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue
+# Harddisk colors. Blue = "#0B57C2" Orange = "#F5681C"
+
+def show_frame(frame):
+    frame.tkraise()
+
+root = customtkinter.CTk()  # create CTk window like you do with the Tk window
+root.title("Harddisk Datapartner")
+root.iconbitmap(default="Logos\HDDLOGO.ico")
+
+root_width = 960
+root_height = 540
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+screen_x = (screen_width / 2) - (root_width / 2)
+screen_y = (screen_height / 2) - (root_height / 2)
+root.geometry(f"{root_width}x{root_height}+{int(screen_x)}+{int(screen_y)}")
+
+
+left_frame = customtkinter.CTkFrame(master=root, fg_color=("gray50", "#292929"), corner_radius=15)
+left_frame.pack(side="left", pady=5, padx=5, fill="y", expand=False)
+
+"""home_frame = customtkinter.CTkFrame(master=root, fg_color=("gray50", "#292929"), corner_radius=15)
+home_frame.pack(pady=5, padx=5, fill="both", expand=True)"""
+
+"""headline_frame = customtkinter.CTkFrame(master=main_frame, fg_color="#0B57C2", corner_radius=15, height=50)
+headline_frame.pack(pady=10, padx=10, fill="x")"""
+
+
+"""home_headline_label = customtkinter.CTkLabel(master=headline_frame, text="Hjem", text_font=("Roboto Medium", 20))
+install_headline_label = customtkinter.CTkLabel(master=headline_frame, text="Velg programvare", text_font=("Roboto Medium", 20))
+support_headline_label = customtkinter.CTkLabel(master=headline_frame, text="support", text_font=("Roboto Medium", 20))"""
+
+
+home_frame = customtkinter.CTkFrame(master=root, fg_color=("gray50", "#F5681C"), corner_radius=15)
+install_frame = customtkinter.CTkFrame(master=root, fg_color=("gray50", "#0B57C2"), corner_radius=15)
+support_frame = customtkinter.CTkFrame(master=root, fg_color=("gray50", "red"), corner_radius=15)
+
+for frame in (home_frame, install_frame, support_frame):
+    frame.pack(pady=5, padx=5, fill="both", expand=True)
+
+show_frame(home_frame)
+
+
+
+def clicked_home():
+    print("Clicked home")
+    show_frame(home_frame)
+    
+def clicked_install_software():
+    print("Clicked install software")
+    show_frame(install_frame)
+    
+def clicked_support():
+    print("Clicked support")
+    show_frame(support_frame)
+
+def change_mode():
+        if mode_switch.get() == 1:
+            customtkinter.set_appearance_mode("dark")
+        else:
+            customtkinter.set_appearance_mode("light")
+        
+image_size = 55
+logo_image_width = 90
+logo_image_height = 70
+
+logo_image = ImageTk.PhotoImage(Image.open("Logos\Menu icons\HDDLOGO.png").resize((logo_image_width, logo_image_height)))
+logo_label = customtkinter.CTkLabel(master=left_frame, text="", image=logo_image)
+logo_label.pack(pady=20, fill="both", expand=False)
+
+home_image = ImageTk.PhotoImage(Image.open("Logos\\Menu icons\\Home.png").resize((image_size, image_size)))
+home_button = customtkinter.CTkButton(master=left_frame, command=clicked_home, fg_color="#0b57c2", hover_color="#F5681C", text="", width=80, height=80, image=home_image)
+home_button.pack(pady=10, padx=10)
+
+install_software_image = ImageTk.PhotoImage(Image.open("Logos\Menu icons\Download.png").resize((image_size, image_size)))
+install_software_button = customtkinter.CTkButton(master=left_frame, command=lambda: show_frame(install_frame), fg_color="#0b57c2", hover_color="#F5681C", text="", width=80, height=80, image=install_software_image)
+install_software_button.pack(pady=10, padx=10)
+
+support_image = ImageTk.PhotoImage(Image.open("Logos\Menu icons\Support.png").resize((image_size, image_size)))
+support_button = customtkinter.CTkButton(master=left_frame, command=clicked_support, fg_color="#0b57c2", hover_color="#F5681C", text="", width=80, height=80, image=support_image)
+support_button.pack(pady=10, padx=10)
+
+mode_switch = customtkinter.CTkSwitch(master=left_frame, text="Dark Mode", command=change_mode)
+mode_switch.select()
+mode_switch.pack(side="bottom", pady=20)
+
+root.mainloop()
+
+
+
+"""# ==========Create notebook(tab manager) Create tabs and frames and packs them/adds them to the notebook==========
+install_notebook = ttk.Notebook(install_frame)
+
+notebook_bg_frame1 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "#383838"))
+notebook_bg_frame2 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "green"))
+notebook_bg_frame3 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "blue"))
+notebook_bg_frame4 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "red"))
+notebook_bg_frame5 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "yellow"))
+notebook_bg_frame6 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "black"))
+notebook_bg_frame7 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "gray"))
+notebook_bg_frame8 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "red"))
+notebook_bg_frame9 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "silver"))
+notebook_bg_frame10 = customtkinter.CTkFrame(install_notebook, fg_color=("#c4c3c2", "cyan"))
+
+
+notebook_bg_frame1.pack(fill="both", expand=True)
+notebook_bg_frame2.pack(fill="both", expand=True)
+notebook_bg_frame3.pack(fill="both", expand=True)
+notebook_bg_frame4.pack(fill="both", expand=True)
+notebook_bg_frame5.pack(fill="both", expand=True)
+notebook_bg_frame6.pack(fill="both", expand=True)
+notebook_bg_frame7.pack(fill="both", expand=True)
+notebook_bg_frame8.pack(fill="both", expand=True)
+notebook_bg_frame9.pack(fill="both", expand=True)
+notebook_bg_frame10.pack(fill="both", expand=True)
+
+
+install_notebook.add(notebook_bg_frame1, text="Standard Pakken")
+install_notebook.add(notebook_bg_frame2, text="Kategori")
+install_notebook.add(notebook_bg_frame3, text="Kategori2")
+install_notebook.add(notebook_bg_frame4, text="Kategori3")
+install_notebook.add(notebook_bg_frame5, text="Kategori4")
+install_notebook.add(notebook_bg_frame6, text="Kategori5")
+install_notebook.add(notebook_bg_frame7, text="Kategori6")
+install_notebook.add(notebook_bg_frame8, text="Kategori7")
+install_notebook.add(notebook_bg_frame9, text="Kategori8")
+install_notebook.add(notebook_bg_frame10, text="Kategor9")
+
+
+notebook1_frame = customtkinter.CTkFrame(master=notebook_bg_frame1, 
+                                                fg_color=("#c4c3c2", "#383838"), 
+                                                corner_radius=15)
+
+notebook1_label = customtkinter.CTkLabel(master=notebook1_frame, 
+                                                fg_color=("#c4c3c2", "#383838"), 
+                                                text="Standard Pakken", 
+                                                text_font=("Roboto Medium", 20), 
+                                                corner_radius=15)
+
+
+notebook1_frame.pack(pady=5, padx=5, fill="x")
+notebook1_label.pack()"""
