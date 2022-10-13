@@ -1,0 +1,11 @@
+Her finner du en rekke nyttige resurser til din disposisjon. 
+Dersom du ønsker å laste ned, avinstallere eller oppdatere programmer kan dette gjøres på en enkel, trygg og grei måte her. 
+
+Alle programmer i listen er gratis programmer vi kan anbefale og er trygge*. 
+Programmer som er merket med oransje er allerede installert på maskinen din. 
+
+Dersom du har behov for hjelp til noe, kan du kontakte oss og få hjelp via fjernstyring. Se Kontakt fanen for mer informasjon om dette.
+
+Dersom du ikke ønsker dette programmet på maskinen din, så kan programmet avinstalleres fra start menyen eller kontrollpanel 
+
+Kildekoden ligger åpen på GitHub slik at man kan se at programvaren er helt trygg.

@@ -1,0 +1,71 @@
+import tkinter as tk
+import customtkinter
+
+class Root(customtkinter.CTk):
+
+    
+    def __init__(self, *args, **kwargs):
+        customtkinter.CTk.__init__(self, *args, **kwargs)
+        self.wm_title("Harddisk Datapartner")
+        self.iconbitmap(default="Logos\\HDDLOGO.ico")
+
+        container = customtkinter.CTkFrame(self, height=1000, width=1500)
+        container.pack(padx=5, pady=5, side="top", fill="both", expand=True)
+
+        container.grid_rowconfigure(0, weight=1)
+        container.grid_columnconfigure(0, weight=1)
+
+        left_frame = customtkinter.CTkFrame(self, text="left frame")
+        left_frame.pack(side="left", fill="y")
+
+        self.frames = {}
+        for F in (HomePage, SupportPage, InstallPage):
+            frame = F(container, self)
+
+            self.frames[F] = frame
+            frame.grid(row=0, column=0, sticky="NSEW")
+        
+        self.show_frame(HomePage)
+    
+    def show_frame(self, cont):
+        frame = self.frames[cont]
+        frame.tkraise()
+    
+class LeftFrame(customtkinter.CTkFrame):
+    def __init__(self, parent, controller):
+        customtkinter.CTkFrame.__init__(self, parent)
+        left_frame = customtkinter.CTkFrame(self, text="left frame")
+        left_frame.pack(side="left", fill="y")
+
+
+
+class HomePage(customtkinter.CTkFrame):
+    def __init__(self, parent, controller):
+        customtkinter.CTkFrame.__init__(self, parent)
+        home_page_label = customtkinter.CTkLabel(self, text="Home Page")
+        home_page_label.pack(padx=5, pady=5)
+
+        switch_Root_button = customtkinter.CTkButton(self, text="Go to Support Page", command=lambda: controller.show_frame(SupportPage))
+        switch_Root_button.pack(side="bottom", fill=tk.X)
+
+class SupportPage(customtkinter.CTkFrame):
+    def __init__(self, parent, controller):
+        customtkinter.CTkFrame.__init__(self, parent)
+        support_page_label = customtkinter.CTkLabel(self, text="Support Page")
+        support_page_label.pack(padx=5, pady=5)
+
+        switch_Root_button = customtkinter.CTkButton(self, text="Go to Install Page", command=lambda: controller.show_frame(InstallPage))
+        switch_Root_button.pack(side="bottom", fill=tk.X)
+
+class InstallPage(customtkinter.CTkFrame):
+    def __init__(self, parent, controller):
+        customtkinter.CTkFrame.__init__(self, parent)
+        support_page_label = customtkinter.CTkLabel(self, text="Install Page")
+        support_page_label.pack(padx=5, pady=5)
+
+        switch_Root_button = customtkinter.CTkButton(self, text="Go to Home Page", command=lambda: controller.show_frame(HomePage))
+        switch_Root_button.pack(side="bottom", fill=tk.X)
+
+if __name__ == "__main__":
+    testObj = Root()
+    testObj.mainloop()

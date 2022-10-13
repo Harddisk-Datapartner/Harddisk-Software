@@ -1,0 +1,12 @@
+Hei
+jeg 
+heter 
+steffen 
+og 
+dette 
+er 
+en 
+test 
+med 
+flere 
+linjer

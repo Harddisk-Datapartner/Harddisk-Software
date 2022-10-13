@@ -1,0 +1,86 @@
+from doctest import master
+from select import select
+from sre_parse import State
+import tkinter
+from turtle import left, mode
+import customtkinter
+from PIL import Image, ImageTk
+
+customtkinter.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
+customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue
+# Harddisk colors. Blue = "#0B57C2" Orange = "#F5681C"
+
+
+class App(customtkinter.CTk):
+    def __init__(self):
+        self._frame = None
+        
+
+
+    # Destroys current frame and replaces it with a new one.
+        def switch_frame(self, frame_class):
+            new_frame = frame_class(self)
+            if self._frame is not None:
+                self._frame.destroy()
+            self._frame = new_frame
+            self._frame.pack()
+
+        # Sets size based on display size
+        super().__init__()
+        root_width = 960
+        root_height = 540
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        screen_x = (screen_width / 2) - (root_width / 2)
+        screen_y = (screen_height / 2) - (root_height / 2)
+        self.geometry(f"{root_width}x{root_height}+{int(screen_x)}+{int(screen_y)}")
+
+        # Sets taskbar title and icon
+        self.title("Harddisk Datapartner")
+        self.iconbitmap(default="Logos\HDDLOGO.ico")
+
+        image_size = 55
+
+        left_frame = customtkinter.CTkFrame(master=self, fg_color=("gray50", "#292929"), corner_radius=15)
+        left_frame.pack(side="left", pady=5, padx=5, fill="y", expand=False)
+
+        main_frame = customtkinter.CTkFrame(master=self, fg_color=("gray50", "#292929"), corner_radius=15)
+        main_frame.pack(pady=5, padx=5, fill="both", expand=True)
+
+
+
+        home_image = ImageTk.PhotoImage(Image.open("Logos\\Menu icons\\Home.png").resize((image_size, image_size)))
+        home_button = customtkinter.CTkButton(master=left_frame, command=lambda: switch_frame(HomePage), fg_color="#0b57c2", hover_color="#F5681C", text="", width=80, height=80, image=home_image)
+        home_button.pack(pady=10, padx=10)
+
+        install_software_image = ImageTk.PhotoImage(Image.open("Logos\Menu icons\Download.png").resize((image_size, image_size)))
+        install_software_button = customtkinter.CTkButton(master=left_frame, command=lambda: switch_frame(InstallPage), fg_color="#0b57c2", hover_color="#F5681C", text="", width=80, height=80, image=install_software_image)
+        install_software_button.pack(pady=10, padx=10)
+
+        support_image = ImageTk.PhotoImage(Image.open("Logos\Menu icons\Support.png").resize((image_size, image_size)))
+        support_button = customtkinter.CTkButton(master=left_frame, command=lambda: switch_frame(SupportPage), fg_color="#0b57c2", hover_color="#F5681C", text="", width=80, height=80, image=support_image)
+        support_button.pack(pady=10, padx=10)
+
+class HomePage():
+        def __init__(self, master):
+            customtkinter.CTkFrame.__init__(self, master)
+            home_headline_label = customtkinter.CTkLabel(master=self, text="Hjem", text_font=("Roboto Medium", 20))
+            home_headline_label.pack()
+
+class InstallPage(App):
+        def __init__(self, master):
+            customtkinter.CTkFrame.__init__(self, master)
+            install_headline_label = customtkinter.CTkLabel(master=self, text="Installer Programvare", text_font=("Roboto Medium", 20))
+            install_headline_label.pack()
+
+class SupportPage(App):
+        def __init__(self, master):
+            customtkinter.CTkFrame.__init__(self, master)
+            support_headline_label = customtkinter.CTkLabel(master=self, text="Support", text_font=("Roboto Medium", 20))
+            support_headline_label.pack()
+
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
+
+

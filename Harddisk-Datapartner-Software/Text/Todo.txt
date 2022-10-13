@@ -1,0 +1,17 @@
+Combine long strings of text into another python file. Same with images
+Add a way to show installation progress.
+Add a way to show the "selected software labels" on mulitple lines after a certain amount of labels packed
+Add a way to show installed programs
+Add a way to show when programs are out of date.
+
+
+
+Remove the entire chosen label frame after clicking install. Show loading bar and text
+
+
+Adobe Reader displays "Installer failed with exit code: 150201" When attempting to install
+Ubisoft won't uninstall because of --force command needed to install. Add code to remove --force from software list string on update(?) and uninstall
+Irfanview won't actually uninstall, even though the uninstall wizard works and reports that the program is uninstalled.
+Skype installs as expected, but unable to uninstall "No installed package found matching input criteria"
+Geforce experience won't unistall. "Uninstall failed with exit code: 2147942405" Wizard pops up saying "Installasjon misslykkes" 
+Icue failed install. "Installer failed with exit code: 1603"
